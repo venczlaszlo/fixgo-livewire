@@ -24,7 +24,7 @@ class ServiceController extends Controller
     }
 
     public function automentok() {
-        return view('services.automentok');
+        return view('services.automento');
     }
 
     public function index($type) {

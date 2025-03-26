@@ -27,11 +27,12 @@ Route::get('/profile', function () {
 
 // Szolgáltatások routeok:
 
-Route::get('/alkatreszkereskedo', [ServiceController::class, 'alkatreszkereskedo'])->name('alkatreszkereskedo');
-Route::get('/autoszerelo', [ServiceController::class, 'autoszerelo'])->name('autoszerelo');
-Route::get('/gumiszerviz', [ServiceController::class, 'gumiszerviz'])->name('gumiszerviz');
-Route::get('/automoso', [ServiceController::class, 'automoso'])->name('automoso');
-Route::get('/automentok', [ServiceController::class, 'automentok'])->name('automentok');
+Route::get('/alkatreszkereskedo', [ServiceController::class, 'index'])->name('alkatreszkereskedo')->defaults('type', 'alkatreszkereskedo');
+Route::get('/autoszerelo', [ServiceController::class, 'index'])->name('autoszerelo')->defaults('type', 'autoszerelo');
+Route::get('/gumiszerviz', [ServiceController::class, 'index'])->name('gumiszerviz')->defaults('type', 'gumiszerviz');
+Route::get('/automoso', [ServiceController::class, 'index'])->name('automoso')->defaults('type', 'automoso');
+Route::get('/automentok', [ServiceController::class, 'index'])->name('automentok')->defaults('type', 'automentok');
+
 
 // Cég routeok:
 
