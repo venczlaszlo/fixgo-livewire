@@ -1,4 +1,3 @@
-<!-- resources/views/components/layouts/main.blade.php -->
 <!DOCTYPE html>
 <html lang="hu">
 <head>
@@ -7,25 +6,33 @@
     <title>Fix&Go</title>
     @vite('resources/css/app.css')
 </head>
-<body class="min-h-screen flex flex-col bg-cover bg-center bg-no-repeat antialiased dark:bg-gradient-to-b dark:from-neutral-950 dark:to-neutral-900"
+<body id="main-body"
+    data-bg-light="{{ asset('images/bg.jpg') }}"
+    data-bg-dark="{{ asset('images/bgdark.jpg') }}"
+    class="min-h-screen flex flex-col bg-cover bg-center bg-no-repeat antialiased transition-all duration-300 text-black dark:text-white"
     style="background-image: url('{{ asset('images/bg.jpg') }}'); background-size: cover; background-position: center center; background-attachment: fixed;">
 
 <!-- Header -->
-<header class="navbar bg-gray-200 shadow-sm transition-all fixed top-0 left-0 w-full z-50" id="navbar">
+<header id="navbar" class="navbar bg-gray-200 dark:bg-gray-900 text-black dark:text-white shadow-sm transition-all fixed top-0 left-0 w-full z-50">
     <div class="flex-1 flex items-center ml-55 mt-1 mb-1">
         <a href="/">
             <img src="/images/logo.png" alt="Fix&Go Logo" class="w-40 mr-2">
         </a>
     </div>
     
-    <div class="flex-none flex gap-2 mr-55">
+    <div class="flex-none flex gap-2 mr-55 items-center">
+        <!-- Dark mode toggle -->
+        <label class="cursor-pointer">
+            <input type="checkbox" id="themeToggle" class="toggle" />
+        </label>
+
         @if (Route::has('login'))
             @auth
-            <a href="{{ route('profile') }}" class="btn bg-[#187aa0] hover:bg-[#125d7a] text-white">Profil</a>
+                <a href="{{ route('profile') }}" class="btn bg-[#187aa0] hover:bg-[#125d7a] text-white dark:text-white">Profil</a>
             @else
-                <a href="{{ route('login') }}" class="btn bg-[#187aa0] hover:bg-[#125d7a] text-white">Bejelentkezés</a>
+                <a href="{{ route('login') }}" class="btn bg-[#187aa0] hover:bg-[#125d7a] text-white dark:text-white">Bejelentkezés</a>
                 @if (Route::has('register'))
-                    <a href="{{ route('register') }}" class="btn bg-[#125d7a] hover:bg-[#0e4860] text-white">Regisztráció</a>
+                    <a href="{{ route('register') }}" class="btn bg-[#125d7a] hover:bg-[#0e4860] text-white dark:text-white">Regisztráció</a>
                 @endif
             @endauth
         @endif
@@ -41,15 +48,49 @@
             header.classList.remove('shadow-xl', 'bg-opacity-90');
         }
     };
+
+    // Téma kezelés
+    const toggle = document.getElementById('themeToggle');
+    const htmlTag = document.documentElement;
+    const body = document.getElementById('main-body');
+
+    const lightBg = body.dataset.bgLight;
+    const darkBg = body.dataset.bgDark;
+
+    function setBackground(imageUrl) {
+        body.style.backgroundImage = `url('${imageUrl}')`;
+        body.style.backgroundSize = 'cover';
+        body.style.backgroundPosition = 'center center';
+        body.style.backgroundRepeat = 'no-repeat';
+        body.style.backgroundAttachment = 'fixed';
+    }
+
+    if (localStorage.getItem('theme') === 'dark') {
+        htmlTag.classList.add('dark');
+        toggle.checked = true;
+        setBackground(darkBg);
+    }
+
+    toggle.addEventListener('change', () => {
+        if (toggle.checked) {
+            htmlTag.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+            setBackground(darkBg);
+        } else {
+            htmlTag.classList.remove('dark');
+            localStorage.setItem('theme', 'light');
+            setBackground(lightBg);
+        }
+    });
 </script>
 
 <!-- Content wrapper -->
 <div class="flex-grow p-4 mt-20">
-    {{ $slot }} <!-- A dinamikus tartalom ide kerül -->
+    {{ $slot }}
 </div>
-    
+
 <!-- Footer -->
-<footer class="footer sm:footer-horizontal bg-gray-200 text-black p-10">
+<footer class="footer sm:footer-horizontal bg-gray-200 dark:bg-gray-900 text-black dark:text-white p-10 transition-all">
     <aside class="ml-[150px]">
         <img src="images/logo.png" alt="Icon" width="100" />
         <br />
@@ -63,7 +104,7 @@
         <a href="{{ route('autoszerelo') }}" class="link link-hover">Autószerelők</a>
         <a href="{{ route('gumiszerviz') }}" class="link link-hover">Gumiszervízek</a>
     </nav>
-    
+
     <nav>
         <h6 class="footer-title">Céginformációk</h6>
         <a href="{{ route('about-us') }}" class="link link-hover">Rólunk</a>
@@ -75,7 +116,6 @@
         <a href="{{ route('privacy-policy') }}" class="link link-hover">Adatvédelmi irányelvek</a>
         <a href="{{ route('cookie-policy') }}" class="link link-hover">Süti szabályzat</a>
     </nav>
-    
 </footer>
 </body>
 </html>
