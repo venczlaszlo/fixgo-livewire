@@ -16,7 +16,7 @@ Route::get('/', function () {
 Route::middleware('auth')->get('/profile', [ProfileController::class, 'showProfile'])->name('profile');
 
 Route::get('/home', function () {
-    return view('home'); // vagy a kívánt nézet
+    return view('homepage');
 })->name('home');
 
 // Profil route:
@@ -25,6 +25,14 @@ Route::get('/profile', function () {
     return view('profile.profile');
 })->name('profile');
 
+
+Route::middleware(['auth'])->group(function () {
+    Route::view('/profile', 'profile.profile')->name('profile');
+    Route::post('/profile/upload', [ProfileController::class, 'upload'])->name('profile.upload');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+
 // Szolgáltatások routeok:
 
 Route::get('/alkatreszkereskedo', [ServiceController::class, 'index'])->name('alkatreszkereskedo')->defaults('type', 'alkatreszkereskedo');
@@ -32,6 +40,13 @@ Route::get('/autoszerelo', [ServiceController::class, 'index'])->name('autoszere
 Route::get('/gumiszerviz', [ServiceController::class, 'index'])->name('gumiszerviz')->defaults('type', 'gumiszerviz');
 Route::get('/automoso', [ServiceController::class, 'index'])->name('automoso')->defaults('type', 'automoso');
 Route::get('/automentok', [ServiceController::class, 'index'])->name('automentok')->defaults('type', 'automentok');
+
+
+
+Route::get('/services/{slug}', [ServiceController::class, 'show'])->name('services.show');
+
+
+
 
 
 // Cég routeok:

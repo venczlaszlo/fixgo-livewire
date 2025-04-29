@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('services', function (Blueprint $table) {
-            //
+            $table->string('address', 255)->after('desc');
+            $table->mediumText('long_desc')->nullable()->after('address');
         });
     }
 
