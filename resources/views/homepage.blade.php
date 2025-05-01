@@ -2,35 +2,37 @@
     <!-- Fő tartalom -->
     <div class="main-content">
         <div class="mb-55 mt-35">
-            <h1 class="text-4xl font-bold text-left text-black dark:text-white mb-8 pl-54">
-                Találd meg a számodra megfelelő szolgáltatást!
-            </h1>
-            <div class="flex justify-center gap-12 flex-wrap mt-6">
-                <a href="{{ route('alkatreszkereskedo') }}"
-                class="flex flex-col items-center justify-center p-8 text-center w-[250px] h-[250px] rounded-xl font-bold text-black dark:text-white shadow-md bg-white/80 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition transition-transform transform hover:scale-105 duration-300 ease-in-out">
-                 <img src="/images/alkatreszkereskedologo.png" alt="Alkatrészkereskedő ikon" class="w-24 h-24 mb-4">
-                 Alkatrészkereskedők
-             </a>
-             <a href="{{ route('autoszerelo') }}"
-                class="flex flex-col items-center justify-center p-8 text-center w-[250px] h-[250px] rounded-xl font-bold text-black dark:text-white shadow-md bg-white/80 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition transition-transform transform hover:scale-105 duration-300 ease-in-out">
-                 <img src="/images/autoszerelologo.png" alt="Autószerelő ikon" class="w-24 h-24 mb-4">
-                 Autószerelők
-             </a>
-             <a href="{{ route('gumiszerviz') }}"
-                class="flex flex-col items-center justify-center p-8 text-center w-[250px] h-[250px] rounded-xl font-bold text-black dark:text-white shadow-md bg-white/80 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition transition-transform transform hover:scale-105 duration-300 ease-in-out">
-                 <img src="/images/gumiszervizlogo.png" alt="Gumiszervíz ikon" class="w-24 h-24 mb-4">
-                 Gumiszervízek
-             </a>
-             <a href="{{ route('automoso') }}"
-                class="flex flex-col items-center justify-center p-8 text-center w-[250px] h-[250px] rounded-xl font-bold text-black dark:text-white shadow-md bg-white/80 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition transition-transform transform hover:scale-105 duration-300 ease-in-out">
-                 <img src="/images/automosologo.png" alt="Autómosó ikon" class="w-24 h-24 mb-4">
-                 Autómosók
-             </a>
-             <a href="{{ route('automentok') }}"
-                class="flex flex-col items-center justify-center p-8 text-center w-[250px] h-[250px] rounded-xl font-bold text-black dark:text-white shadow-md bg-white/80 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition transition-transform transform hover:scale-105 duration-300 ease-in-out">
-                 <img src="/images/automentoklogo.png" alt="Autómentő ikon" class="w-24 h-24 mb-4">
-                 Autómentők
-             </a>             
+            <div class="w-fit mx-auto">
+                <h1 class="text-4xl font-bold text-left text-black dark:text-white mb-8 pl-4 sm:pl-8">
+                    Találd meg a számodra megfelelő szolgáltatást!
+                </h1>
+                <div class="flex flex-wrap justify-center gap-8 mt-6">
+                    <a href="{{ route('alkatreszkereskedo') }}"
+                       class="flex flex-col items-center justify-center p-8 text-center w-[250px] h-[250px] sm:w-[200px] sm:h-[200px] rounded-xl font-bold text-black dark:text-white shadow-md bg-white/80 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition transition-transform transform hover:scale-105 duration-300 ease-in-out">
+                        <img src="/images/alkatreszkereskedologo.png" alt="Alkatrészkereskedő ikon" class="w-24 h-24 mb-4">
+                        Alkatrészkereskedők
+                    </a>
+                    <a href="{{ route('autoszerelo') }}"
+                       class="flex flex-col items-center justify-center p-8 text-center w-[250px] h-[250px] sm:w-[200px] sm:h-[200px] rounded-xl font-bold text-black dark:text-white shadow-md bg-white/80 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition transition-transform transform hover:scale-105 duration-300 ease-in-out">
+                        <img src="/images/autoszerelologo.png" alt="Autószerelő ikon" class="w-24 h-24 mb-4">
+                        Autószerelők
+                    </a>
+                    <a href="{{ route('gumiszerviz') }}"
+                       class="flex flex-col items-center justify-center p-8 text-center w-[250px] h-[250px] sm:w-[200px] sm:h-[200px] rounded-xl font-bold text-black dark:text-white shadow-md bg-white/80 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition transition-transform transform hover:scale-105 duration-300 ease-in-out">
+                        <img src="/images/gumiszervizlogo.png" alt="Gumiszervíz ikon" class="w-24 h-24 mb-4">
+                        Gumiszervízek
+                    </a>
+                    <a href="{{ route('automoso') }}"
+                       class="flex flex-col items-center justify-center p-8 text-center w-[250px] h-[250px] sm:w-[200px] sm:h-[200px] rounded-xl font-bold text-black dark:text-white shadow-md bg-white/80 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition transition-transform transform hover:scale-105 duration-300 ease-in-out">
+                        <img src="/images/automosologo.png" alt="Autómosó ikon" class="w-24 h-24 mb-4">
+                        Autómosók
+                    </a>
+                    <a href="{{ route('automentok') }}"
+                       class="flex flex-col items-center justify-center p-8 text-center w-[250px] h-[250px] sm:w-[200px] sm:h-[200px] rounded-xl font-bold text-black dark:text-white shadow-md bg-white/80 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition transition-transform transform hover:scale-105 duration-300 ease-in-out">
+                        <img src="/images/automentoklogo.png" alt="Autómentő ikon" class="w-24 h-24 mb-4">
+                        Autómentők
+                    </a>
+                </div>
             </div>
         </div>
     </div>

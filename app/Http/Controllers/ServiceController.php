@@ -37,4 +37,24 @@ class ServiceController extends Controller
         $service = Service::where('slug', $slug)->firstOrFail();
         return view('services.show', compact('service'));
     }
+
+    public function uploadImage(Request $request, $id)
+    {
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        $service = Service::findOrFail($id);
+
+        if ($request->hasFile('image')) {
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('images'), $imageName);
+
+            // Frissítjük a képet az adatbázisban
+            $service->image = $imageName;
+            $service->save();
+        }
+
+        return back()->with('success', 'Kép sikeresen feltöltve!');
+    }
 }

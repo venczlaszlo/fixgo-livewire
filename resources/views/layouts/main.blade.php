@@ -19,7 +19,7 @@
             <img src="/images/logo.png" alt="Fix&Go Logo" class="w-40 mr-2">
         </a>
     </div>
-    
+
     <div class="flex-none flex gap-2 mr-55 items-center">
         <!-- Dark mode toggle -->
         <label class="cursor-pointer">

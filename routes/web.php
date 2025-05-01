@@ -46,6 +46,7 @@ Route::get('/automentok', [ServiceController::class, 'index'])->name('automentok
 Route::get('/services/{slug}', [ServiceController::class, 'show'])->name('services.show');
 
 
+Route::post('/service/{id}/upload-image', [ServiceController::class, 'uploadImage'])->name('service.uploadImage');
 
 
 

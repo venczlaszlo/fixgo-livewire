@@ -1,97 +1,100 @@
 <x-main-layout>
-    <div class="container mx-auto px-4 py-8 text-black">
-        <div class="bg-white/80 shadow-lg rounded-2xl p-8 space-y-6">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 text-black">
+        <div class="bg-white/80 dark:bg-gray-800 shadow-lg rounded-2xl p-6 sm:p-8 space-y-6">
+            <h1 class="text-2xl sm:text-3xl font-bold text-[#187aa0] dark:text-white">{{ $service->name }}</h1>
+            <div class="flex flex-col sm:flex-row items-center sm:items-start space-x-6">
+                <div class="flex-1">
+                    <div class="text-gray-700 dark:text-gray-300 space-y-2">
+                        <p class="text-base sm:text-lg"><span class="font-semibold">Cím:</span> {{ $service->address }}</p>
+                        @if($service->phone)
+                            <p class="text-base sm:text-lg"><span class="font-semibold">Telefon:</span> {{ $service->phone }}</p>
+                        @endif
+                        @if($service->email)
+                            <p class="text-base sm:text-lg"><span class="font-semibold">E-mail:</span> {{ $service->email }}</p>
+                        @endif
+                        @if($service->website)
+                            <p class="text-base sm:text-lg"><span class="font-semibold">Weboldal:</span>
+                                <a href="{{ $service->website }}" target="_blank" class="text-[#187aa0] hover:underline">{{ $service->website }}</a>
+                            </p>
+                        @endif
+                        @if($service->opening_hours)
+                            <p class="text-base sm:text-lg"><span class="font-semibold">Nyitvatartás:</span> {{ $service->opening_hours }}</p>
+                        @endif
+                    </div>
 
-            <h1 class="text-3xl font-bold text-blue-700">{{ $service->name }}</h1>
+                    @if($service->rating)
+                        <div class="flex items-center flex-wrap gap-1">
+                            <span class="font-semibold mr-2">Értékelés:</span>
+                            @for ($i = 1; $i <= 5; $i++)
+                                <svg class="w-5 h-5 {{ $i <= $service->rating ? 'text-yellow-400' : 'text-gray-300' }}" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.967h4.174c.969 0 1.371 1.24.588 1.81l-3.38 2.455 1.286 3.966c.3.922-.755 1.688-1.539 1.118l-3.379-2.455-3.38 2.455c-.783.57-1.838-.196-1.539-1.118l1.287-3.966-3.38-2.455c-.783-.57-.38-1.81.588-1.81h4.174L9.049 2.927z"/>
+                                </svg>
+                            @endfor
+                            <span class="ml-2 text-sm text-gray-500">{{ number_format($service->rating, 1) }}/5</span>
+                        </div>
+                    @endif
 
-            @if($service->image)
-                <img src="{{ asset('images/' . $service->image) }}" alt="{{ $service->name }}" class="w-full h-64 object-cover rounded-lg shadow">
-            @endif
+                    @if($service->features)
+                        <div>
+                            <h2 class="text-lg sm:text-xl font-semibold mt-4 mb-2">Felszereltség</h2>
+                            <ul class="list-disc list-inside text-gray-600 dark:text-gray-300">
+                                @foreach(explode(',', $service->features) as $feature)
+                                    <li>{{ trim($feature) }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
 
-            <div class="text-gray-700 space-y-2">
-                <p class="text-lg"><span class="font-semibold">Típus:</span> {{ ucfirst($service->type) }}</p>
-                <p class="text-lg"><span class="font-semibold">Cím:</span> {{ $service->address }}</p>
-                @if($service->phone)
-                    <p class="text-lg"><span class="font-semibold">Telefon:</span> {{ $service->phone }}</p>
-                @endif
-                @if($service->email)
-                    <p class="text-lg"><span class="font-semibold">E-mail:</span> {{ $service->email }}</p>
-                @endif
-                @if($service->website)
-                    <p class="text-lg"><span class="font-semibold">Weboldal:</span>
-                        <a href="{{ $service->website }}" target="_blank" class="text-blue-500 hover:underline">{{ $service->website }}</a>
-                    </p>
-                @endif
-                @if($service->opening_hours)
-                    <p class="text-lg"><span class="font-semibold">Nyitvatartás:</span> {{ $service->opening_hours }}</p>
+                    <div>
+                        <h2 class="text-lg sm:text-xl font-semibold mt-4 mb-2">Rövid leírás</h2>
+                        <p class="text-gray-600 dark:text-gray-300">{{ $service->desc }}</p>
+                    </div>
+
+                    @if($service->long_desc)
+                        <div>
+                            <h2 class="text-lg sm:text-xl font-semibold mt-4 mb-2">Részletes leírás</h2>
+                            <p class="text-gray-600 dark:text-gray-300 whitespace-pre-line">{{ $service->long_desc }}</p>
+                        </div>
+                    @endif
+
+                    @if($service->lat && $service->lng)
+                        <div>
+                            <h2 class="text-lg sm:text-xl font-semibold mt-4 mb-2">Térkép</h2>
+                            <div id="map" class="w-full h-[400px] rounded-lg shadow"></div>
+
+                        </div>
+                        <script>
+                            function initMap() {
+                                const location = { lat: {{ $service->lat }}, lng: {{ $service->lng }} };
+                                const map = new google.maps.Map(document.getElementById("map"), {
+                                    zoom: 15,
+                                    center: location,
+                                });
+                                const marker = new google.maps.Marker({
+                                    position: location,
+                                    map: map,
+                                });
+                            }
+                        </script>
+                        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdGjOLHKGW3gKfP9hA0B_bvRDxgAwwB0g &callback=initMap" async defer></script>
+                    @endif
+                </div>
+
+                @if($service->image)
+                    <div class="flex-shrink-0">
+                        <img src="{{ asset($service->image) }}" alt="{{ $service->name }}" class="w-[400px] h-[300px] object-cover rounded-lg shadow-lg"">
+                    </div>
                 @endif
             </div>
 
-            @if($service->rating)
-                <div class="flex items-center">
-                    <span class="font-semibold mr-2">Értékelés:</span>
-                    @for ($i = 1; $i <= 5; $i++)
-                        <svg class="w-5 h-5 {{ $i <= $service->rating ? 'text-yellow-400' : 'text-gray-300' }}" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.967h4.174c.969 0 1.371 1.24.588 1.81l-3.38 2.455 1.286 3.966c.3.922-.755 1.688-1.539 1.118l-3.379-2.455-3.38 2.455c-.783.57-1.838-.196-1.539-1.118l1.287-3.966-3.38-2.455c-.783-.57-.38-1.81.588-1.81h4.174L9.049 2.927z"/>
-                        </svg>
-                    @endfor
-                    <span class="ml-2 text-sm text-gray-500">{{ number_format($service->rating, 1) }}/5</span>
-                </div>
-            @endif
-
-            @if($service->features)
-                <div>
-                    <h2 class="text-xl font-semibold mt-4 mb-2">Felszereltség</h2>
-                    <ul class="list-disc list-inside text-gray-600">
-                        @foreach(explode(',', $service->features) as $feature)
-                            <li>{{ trim($feature) }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-
-            <div>
-                <h2 class="text-xl font-semibold mt-4 mb-2">Rövid leírás</h2>
-                <p class="text-gray-600">{{ $service->desc }}</p>
-            </div>
-
-            @if($service->long_desc)
-                <div>
-                    <h2 class="text-xl font-semibold mt-4 mb-2">Részletes leírás</h2>
-                    <p class="text-gray-600 whitespace-pre-line">{{ $service->long_desc }}</p>
-                </div>
-            @endif
-
-            @if($service->lat && $service->lng)
-                <div>
-                    <h2 class="text-xl font-semibold mt-4 mb-2">Térkép</h2>
-                    <div id="map" class="w-full h-64 rounded-lg shadow"></div>
-                </div>
-                <script>
-                    function initMap() {
-                        const location = { lat: {{ $service->lat }}, lng: {{ $service->lng }} };
-                        const map = new google.maps.Map(document.getElementById("map"), {
-                            zoom: 15,
-                            center: location,
-                        });
-                        const marker = new google.maps.Marker({
-                            position: location,
-                            map: map,
-                        });
-                    }
-                </script>
-                <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
-            @endif
-
-            <div class="text-sm text-gray-400">
+            <div class="text-sm text-gray-400 dark:text-gray-500">
                 <p>Létrehozva: {{ $service->created_at->format('Y. m. d. H:i') }}</p>
                 <p>Frissítve: {{ $service->updated_at->format('Y. m. d. H:i') }}</p>
             </div>
 
-            <a href="{{ url()->previous() }}" class="inline-block bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
+            <a href="{{ url()->previous() }}" class="inline-block bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors duration-300">
                 Vissza
             </a>
-
         </div>
     </div>
 </x-main-layout>
