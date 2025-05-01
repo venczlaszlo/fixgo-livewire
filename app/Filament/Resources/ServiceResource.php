@@ -23,9 +23,15 @@ class ServiceResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('type')
+                Forms\Components\Select::make('type')
                     ->required()
-                    ->maxLength(255),
+                    ->options([
+                        'alkatreszkereskedo' => 'Alkatrészkereskedő',
+                        'autoszerelo' => 'Autószerelő',
+                        'gumiszerviz' => 'Gumiszerviz',
+                        'automoso' => 'Autómosó',
+                        'automentok' => 'Autómentők',
+                    ]),
                 Forms\Components\TextInput::make('slug')
                     ->required()
                     ->maxLength(255),
