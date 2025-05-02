@@ -16,7 +16,8 @@
 <header id="navbar" class="navbar bg-gray-200 dark:bg-gray-900 text-black dark:text-white shadow-sm transition-all fixed top-0 left-0 w-full z-50">
     <div class="flex-1 flex items-center ml-55 mt-1 mb-1">
         <a href="/">
-            <img src="/images/logo.png" alt="Fix&Go Logo" class="w-40 mr-2">
+            <img src="/images/logo.png" alt="Fix&Go Logo" class="w-40 mr-2 dark:hidden">
+            <img src="/images/logo_dark.png" alt="Fix&Go Logo" class="w-40 mr-2 hidden dark:block">
         </a>
     </div>
 
@@ -92,10 +93,12 @@
 <!-- Footer -->
 <footer class="footer sm:footer-horizontal bg-gray-200 dark:bg-gray-900 text-black dark:text-white p-10 transition-all">
     <aside class="ml-[150px]">
-        <img src="images/logo.png" alt="Icon" width="100" />
+        <img src="images/logo.png" alt="Icon" width="100" class="dark:hidden" />
+        <img src="images/logo_dark.png" alt="Icon" width="100" class="hidden dark:block" />
         <br />
         Járműkarbantartó kereső szolgáltatás 2025 óta.
     </aside>
+
     <nav>
         <h6 class="footer-title">Szolgáltatások</h6>
         <a href="{{ route('alkatreszkereskedo') }}" class="link link-hover">Alkatrészkereskedők</a>
