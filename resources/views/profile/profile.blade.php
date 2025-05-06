@@ -13,6 +13,24 @@
                         <p><strong>Email:</strong> {{ Auth::user()->email }}</p>
                     </div>
 
+                    <div class="mt-8">
+                        <h2 class="text-xl font-bold mb-4">Kedvenc szolgáltatások</h2>
+                        @if(auth()->user()->favoriteServices->isEmpty())
+                            <p>Nincs még kedvenc szolgáltatásod.</p>
+                        @else
+                            <ul class="space-y-3">
+                                @foreach(auth()->user()->favoriteServices as $fav)
+                                    <li class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
+                                        <a href="{{ route('services.show', $fav->slug) }}" class="text-[#187aa0] hover:underline">
+                                            {{ $fav->name }}
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        @endif
+                    </div>
+
+
                     {{-- Gombok --}}
                     <div class="flex flex-wrap gap-3 mt-6">
 

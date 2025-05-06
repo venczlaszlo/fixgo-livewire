@@ -16,5 +16,25 @@ class Service extends Model
         'lat', 'lng', 'long_desc'
     ];
 
+    public function favoredByUsers()
+    {
+        return $this->belongsToMany(User::class, 'favorite_services')->withTimestamps();
+    }
+
+    public function toggleFavorite(Service $service)
+    {
+        $user = auth()->user();
+
+        if ($user->favoriteServices()->where('service_id', $service->id)->exists()) {
+            $user->favoriteServices()->detach($service->id);
+        } else {
+            $user->favoriteServices()->attach($service->id);
+        }
+
+        return back();
+    }
+
+
+
 
 }

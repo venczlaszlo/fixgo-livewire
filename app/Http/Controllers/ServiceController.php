@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Service;
+use Illuminate\Support\Facades\Auth;
 
 class ServiceController extends Controller
 {
@@ -32,7 +33,7 @@ class ServiceController extends Controller
         return view('services.index', compact('services'));
     }
 
-    // ÚJ: szolgáltatás részletes megjelenítése slug alapján
+    // Szolgáltatás részletes megjelenítése slug alapján
     public function show($slug) {
         $service = Service::where('slug', $slug)->firstOrFail();
         return view('services.show', compact('service'));
@@ -56,5 +57,19 @@ class ServiceController extends Controller
         }
 
         return back()->with('success', 'Kép sikeresen feltöltve!');
+    }
+
+    // Kedvencekhez adás/eltávolítás
+    public function toggleFavorite(Service $service)
+    {
+        $user = Auth::user();
+
+        if ($user->favoriteServices()->where('service_id', $service->id)->exists()) {
+            $user->favoriteServices()->detach($service->id);  // Eltávolítja a kedvencek közül
+        } else {
+            $user->favoriteServices()->attach($service->id);  // Hozzáadja a kedvencekhez
+        }
+
+        return back();
     }
 }

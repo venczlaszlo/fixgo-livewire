@@ -73,4 +73,10 @@ class User extends Authenticatable implements FilamentUser
         return $this->hasRole('super-admin');
     }
 
+    public function favoriteServices()
+    {
+        return $this->belongsToMany(Service::class, 'favorite_services')->withTimestamps();
+    }
+
+
 }

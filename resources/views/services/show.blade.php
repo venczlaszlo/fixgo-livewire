@@ -57,6 +57,20 @@
                         <p class="text-gray-600 dark:text-gray-300">{{ $service->desc }}</p>
                     </div>
 
+                    @if(Auth::check())
+                        <form action="{{ route('services.toggleFavorite', $service) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="mt-4 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition">
+                                @if(auth()->user()->favoriteServices->contains($service->id))
+                                    Eltávolítás a kedvencekből
+                                @else
+                                    Kedvencekhez adás
+                                @endif
+                            </button>
+                        </form>
+                    @endif
+
+
                     <!-- Részletes leírás, ha van -->
                     @if($service->long_desc)
                         <div>

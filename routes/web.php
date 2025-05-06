@@ -41,7 +41,7 @@ Route::get('/gumiszerviz', [ServiceController::class, 'index'])->name('gumiszerv
 Route::get('/automoso', [ServiceController::class, 'index'])->name('automoso')->defaults('type', 'automoso');
 Route::get('/automentok', [ServiceController::class, 'index'])->name('automentok')->defaults('type', 'automentok');
 
-
+Route::post('/services/{service}/toggle-favorite', [ServiceController::class, 'toggleFavorite'])->name('services.toggleFavorite');
 
 Route::get('/services/{slug}', [ServiceController::class, 'show'])->name('services.show');
 
