@@ -39,7 +39,8 @@ class ServiceResource extends Resource
                     ->required()
                     ->maxLength(255),
                 Forms\Components\Textarea::make('desc')
-                    ->columnSpanFull(),
+                    ->columnSpanFull()
+                    ->maxLength(150),
                 Forms\Components\TextInput::make('address')
                     ->required()
                     ->maxLength(255),
