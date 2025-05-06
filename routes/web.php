@@ -48,6 +48,7 @@ Route::get('/services/{slug}', [ServiceController::class, 'show'])->name('servic
 
 Route::post('/service/{id}/upload-image', [ServiceController::class, 'uploadImage'])->name('service.uploadImage');
 
+Route::put('/profile/password', [ProfileController::class, 'updatePassword'])->name('password.update');
 
 
 // Cég routeok:
