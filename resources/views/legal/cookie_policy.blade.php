@@ -1,4 +1,26 @@
 <x-main-layout>
-    <!-- Fő tartalom -->
-    asd
+    <div class="main-content mt-35 mb-55">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-4xl font-bold text-left text-black dark:text-white mb-8">Süti szabályzat</h1>
+
+            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 space-y-6 text-gray-800 dark:text-gray-200">
+                <p>Weboldalunk sütiket használ a felhasználói élmény javítása, a forgalom elemzése, valamint marketing célokra.</p>
+
+                <h2 class="text-2xl font-semibold text-black dark:text-white">Mik azok a sütik?</h2>
+                <p>A sütik kis szöveges fájlok, amelyeket a böngésződ ment el, amikor meglátogatsz egy weboldalt. Segítenek abban, hogy felismerjünk téged, amikor újra ellátogatsz hozzánk.</p>
+
+                <h2 class="text-2xl font-semibold text-black dark:text-white">Milyen típusú sütiket használunk?</h2>
+                <ul class="list-disc list-inside space-y-2">
+                    <li><strong>Szükséges sütik:</strong> A weboldal működéséhez elengedhetetlenek.</li>
+                    <li><strong>Statisztikai sütik:</strong> Segítenek megérteni, hogyan használod az oldalt.</li>
+                    <li><strong>Marketing sütik:</strong> A személyre szabott hirdetések megjelenítéséhez használjuk őket.</li>
+                </ul>
+
+                <h2 class="text-2xl font-semibold text-black dark:text-white">Hogyan kezelheted a sütiket?</h2>
+                <p>A legtöbb böngésző lehetővé teszi a sütik beállításainak módosítását. Beállíthatod például, hogy értesítést kapj, amikor süti kerül mentésre, vagy le is tilthatod azokat.</p>
+
+                <p>További információért kérlek vedd fel velünk a kapcsolatot az <a href="mailto:info@fixandgo.hu" class="text-[#187aa0] hover:underline">info@fixandgo.hu</a> címen.</p>
+            </div>
+        </div>
+    </div>
 </x-main-layout>
