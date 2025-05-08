@@ -14,14 +14,15 @@
 
 <!-- Header -->
 <header id="navbar" class="navbar bg-gray-200 dark:bg-gray-900 text-black dark:text-white shadow-sm transition-all fixed top-0 left-0 w-full z-50">
-    <div class="flex-1 flex items-center ml-55 mt-1 mb-1">
+    <div class="flex justify-between w-7xl mx-auto">
+    <div class="items-center mt-1 mb-1">
         <a href="/">
             <img src="/images/logo.png" alt="Fix&Go Logo" class="w-40 mr-2 dark:hidden">
             <img src="/images/logo_dark.png" alt="Fix&Go Logo" class="w-40 mr-2 hidden dark:block">
         </a>
     </div>
 
-    <div class="flex-none flex gap-2 mr-55 items-center">
+    <div class="flex gap-2 items-center">
         <!-- Dark mode toggle -->
         <label class="cursor-pointer">
             <input type="checkbox" id="themeToggle" class="toggle" />
@@ -37,6 +38,7 @@
                 @endif
             @endauth
         @endif
+    </div>
     </div>
 </header>
 
@@ -86,13 +88,14 @@
 </script>
 
 <!-- Content wrapper -->
-<div class="flex-grow p-4 mt-20">
+<div class="w-7xl mx-auto mt-20">
     {{ $slot }}
 </div>
 
 <!-- Footer -->
 <footer class="footer sm:footer-horizontal bg-gray-200 dark:bg-gray-900 text-black dark:text-white p-10 transition-all">
-    <aside class="ml-[150px]">
+    <div class="flex justify-between w-7xl mx-auto">
+    <aside class="">
         <img src="images/logo.png" alt="Icon" width="100" class="dark:hidden" />
         <img src="images/logo_dark.png" alt="Icon" width="100" class="hidden dark:block" />
         <br />
@@ -119,6 +122,7 @@
         <a href="{{ route('privacy-policy') }}" class="link link-hover">Adatvédelmi irányelvek</a>
         <a href="{{ route('cookie-policy') }}" class="link link-hover">Süti szabályzat</a>
     </nav>
+    </div>
 </footer>
 </body>
 </html>

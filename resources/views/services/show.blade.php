@@ -1,6 +1,5 @@
 <x-main-layout>
-    <div class="main-content mt-35 mb-55">
-        <div class="max-w-4xl mx-auto">
+    <div class="px-[15px] py-8 text-black w-full box-border">
             <h1 class="text-4xl font-bold text-left text-black dark:text-white mb-8">{{ $service->name }}</h1>
 
             <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 space-y-6 text-gray-800 dark:text-gray-200">
@@ -121,5 +120,4 @@
                 </a>
             </div>
         </div>
-    </div>
 </x-main-layout>
