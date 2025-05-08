@@ -41,8 +41,6 @@ Route::get('/services/{slug}', [ServiceController::class, 'show'])->name('servic
 // Céges oldalak
 Route::get('/about-us', [CompanyController::class, 'aboutUs'])->name('about-us');
 Route::get('/contact', [CompanyController::class, 'contact'])->name('contact');
-Route::post('/contact', [CompanyController::class, 'send'])->name('contact.send');
-
 
 // Jogi oldalak
 Route::get('/terms-of-service', [LegalController::class, 'termsOfService'])->name('terms-of-service');
