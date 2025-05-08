@@ -22,7 +22,7 @@
                             {{-- Szolgáltatás képe --}}
                             <div class="flex-shrink-0">
                                 <img
-                                    src="{{ $service->image ? asset($service->image) : asset('images/default-image.jpg') }}"
+                                    src="{{ $service->image ? asset('images/'.$service->image) : asset('images/default-image.jpg') }}"
                                     alt="{{ $service->name }}"
                                     class="w-16 h-16 rounded-full object-cover">
                             </div>
