@@ -123,9 +123,9 @@
         <!-- Jogi -->
         <div class="flex flex-col gap-[2px] sm:gap-2 sm:text-sm flex-shrink-0 min-w-[120px]">
             <h6 class="font-semibold text-xs sm:text-sm mb-[2px]">Jogi információk</h6>
-            <a href="{{ route('terms-of-service') }}" class="hover:underline">Feltételek</a>
-            <a href="{{ route('privacy-policy') }}" class="hover:underline">Adatvédelem</a>
-            <a href="{{ route('cookie-policy') }}" class="hover:underline">Sütik</a>
+            <a href="{{ route('terms-of-service') }}" class="hover:underline">Felhasználási feltételek</a>
+            <a href="{{ route('privacy-policy') }}" class="hover:underline">Adatvédelmi irányelvek</a>
+            <a href="{{ route('cookie-policy') }}" class="hover:underline">Süti szabályzat</a>
         </div>
     </div>
 </footer>

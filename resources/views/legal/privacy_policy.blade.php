@@ -72,8 +72,8 @@
                     Kapcsolat
                 </h2>
                 <p>
-                    Ha bármilyen kérdésed van adatkezelési gyakorlatunkkal kapcsolatban, írj nekünk az
-                    <a href="mailto:info@fixandgo.hu" class="text-[#187aa0] hover:underline">info@fixandgo.hu</a> email-címen.
+                    Ha bármilyen kérdésed van adatkezelési gyakorlatunkkal kapcsolatban, kérlek vedd fel velünk a kapcsolatot az
+                    <a href="mailto:fixandgo.team@gmail.com" class="text-[#187aa0] dark:text-[#a2c9d9] hover:underline">fixandgo.team@gmail.com</a> címre.
                 </p>
 
             </div>
