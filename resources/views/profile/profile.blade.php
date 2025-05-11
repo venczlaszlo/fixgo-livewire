@@ -78,7 +78,7 @@
             </div>
 
             {{-- Gombok --}}
-            <div class="flex gap-4 justify-start mt-6">
+            <div class="flex gap-4 justify-center mt-6">
                 {{-- Admin Panel (csak super-adminnak) --}}
                 @if(auth()->user()->isSuperAdmin())
                     <form method="GET" action="{{ url('admin') }}">
