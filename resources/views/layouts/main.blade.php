@@ -10,7 +10,7 @@
       data-bg-light="{{ asset('images/bg.jpg') }}"
       data-bg-dark="{{ asset('images/bgdark.jpg') }}"
       class="min-h-screen flex flex-col bg-cover bg-center bg-no-repeat antialiased transition-all duration-300 text-black dark:text-white"
-      style="background-image: url('{{ asset('images/bg.jpg') }}'); background-size: cover; background-position: center center; background-attachment: fixed;">
+      style="background-image: url('{{ asset('images/bg.jpg') }}'); background-size: cover; background-position: center center; background-attachment: fixed; height: 100%;">
 
 <!-- Header -->
 <header id="navbar" class="navbar bg-gray-200 dark:bg-gray-900 text-black dark:text-white shadow-sm transition-all fixed top-0 left-0 w-full z-50">
@@ -88,7 +88,7 @@
 </script>
 
 <!-- Content wrapper -->
-<div class="max-w-7xl mx-auto px-4 mt-28">
+<div class="max-w-7xl mx-auto px-4 mt-28 flex-1">
     {{ $slot }}
 </div>
 

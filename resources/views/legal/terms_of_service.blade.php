@@ -1,5 +1,5 @@
 <x-main-layout>
-    <div class="main-content mt-35 mb-55">
+    <div class="px-[15px] py-6 text-black w-full box-border">
         <div class="max-w-4xl mx-auto">
             {{-- Cím --}}
             <h1 class="text-4xl font-bold text-center text-black dark:text-white mb-8 mt-10">
@@ -49,7 +49,10 @@
                 <hr class="my-6 border-gray-300 dark:border-gray-600">
 
                 {{-- Kapcsolati információ --}}
-                <p>Ha kérdésed merül fel a feltételekkel kapcsolatban, kérlek írj a <a href="mailto:fixandgo.team@gmail.com" class="text-[#187aa0] dark:text-[#a2c9d9] hover:underline">fixandgo.team@gmail.com</a> címre.</p>
+                <p>Ha kérdésed merül fel a feltételekkel kapcsolatban, kérlek vedd fel velünk a kapcsolatot az
+                    <a href="mailto:fixandgo.team@gmail.com" class="text-[#187aa0] dark:text-[#a2c9d9] hover:underline">fixandgo.team@gmail.com</a> címre.
+                </p>
+
             </div>
         </div>
     </div>

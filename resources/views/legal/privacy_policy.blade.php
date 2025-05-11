@@ -1,5 +1,5 @@
 <x-main-layout>
-    <div class="main-content mt-35 mb-55">
+    <div class="px-[15px] py-6 text-black w-full box-border">
         <div class="max-w-4xl mx-auto">
 
             <!-- Cím -->

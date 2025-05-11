@@ -1,14 +1,19 @@
 <x-main-layout>
     <div class="px-[15px] py-6 text-black w-full box-border">
-        <h1 class="text-4xl font-bold text-left text-black dark:text-white mb-8">Profilom</h1>
-
+        <h1 class="text-4xl font-bold text-center text-black dark:text-white mb-8 mt-10">
+            Profilom
+        </h1>
         <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 w-full">
             {{-- Felhasználói adatok --}}
             <div class="mb-8">
                 <h2 class="text-2xl font-semibold text-black dark:text-white mb-4">Felhasználói adatok</h2>
-                <p><strong class="font-medium">Név:</strong> {{ Auth::user()->name }}</p>
-                <p><strong class="font-medium">Email:</strong> {{ Auth::user()->email }}</p>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <p class="text-black dark:text-white"><strong class="font-medium">Név:</strong> {{ Auth::user()->name }}</p>
+                    <p class="text-black dark:text-white"><strong class="font-medium">Email:</strong> {{ Auth::user()->email }}</p>
+                </div>
             </div>
+
+            <hr class="my-6 border-gray-300 dark:border-gray-600">
 
             {{-- Kedvenc szolgáltatások --}}
             <div class="mb-8">
@@ -18,13 +23,19 @@
                 @else
                     <ul class="space-y-3">
                         @foreach(auth()->user()->favoriteServices as $fav)
-                            <li class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg shadow-sm">
-                                <a href="{{ route('services.show', $fav->slug) }}" class="text-[#187aa0] hover:underline">{{ $fav->name }}</a>
+                            <li class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg shadow-sm flex items-center gap-3">
+                                <img src="{{ $fav->image ? asset('images/' . $fav->image) : asset('images/default-image.jpg') }}" alt="{{ $fav->name }}" class="w-6 h-6 rounded-full object-cover">
+                                <a href="{{ route('services.show', $fav->slug) }}" class="text-[#187aa0] dark:text-[#a2c9d9] hover:underline">
+                                    {{ $fav->name }}
+                                </a>
                             </li>
+
                         @endforeach
                     </ul>
                 @endif
             </div>
+
+            <hr class="my-6 border-gray-300 dark:border-gray-600">
 
             {{-- Jelszó megváltoztatása --}}
             <div class="mb-8">
@@ -71,14 +82,18 @@
                 {{-- Admin Panel (csak super-adminnak) --}}
                 @if(auth()->user()->isSuperAdmin())
                     <form method="GET" action="{{ url('admin') }}">
-                        <button type="submit" class="btn btn-outline btn-sm">Admin Panel</button>
+                        <button type="submit" class="btn btn-outline btn-sm border-black text-black hover:bg-black hover:text-white dark:border-white dark:text-white hover:dark:bg-white hover:dark:text-black">
+                            Admin Panel
+                        </button>
                     </form>
                 @endif
 
                 {{-- Kijelentkezés --}}
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-                    <button type="submit" class="btn btn-outline btn-sm">Kijelentkezés</button>
+                    <button type="submit" class="btn btn-outline btn-sm border-black text-black hover:bg-black hover:text-white dark:border-white dark:text-white hover:dark:bg-white hover:dark:text-black">
+                        Kijelentkezés
+                    </button>
                 </form>
 
                 {{-- Fiók törlése --}}
