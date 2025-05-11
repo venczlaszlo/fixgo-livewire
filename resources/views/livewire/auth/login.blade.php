@@ -73,7 +73,7 @@ new #[Layout('components.layouts.auth')] class extends Component {
     }
 }; ?>
 
-<div class="flex flex-col gap-6 min-h-screen bg-white dark:bg-[url('/images/bg.dark.jpg')] bg-cover bg-center">
+<div class="flex flex-col gap-6">
 
     <x-auth-header :title="__('Bejelentkezés a fiókodba')" :description="__('Add meg az email címed és a jelszavada bejelentkezéshez!')" />
 

@@ -1,10 +1,28 @@
 <!DOCTYPE html>
 <html lang="hu">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fix&Go</title>
     @vite('resources/css/app.css')
+    <style>
+        .theme-toggle {
+            background: transparent;
+            border: none;
+            padding: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: currentColor;
+            transition: color 0.3s ease;
+        }
+        .theme-toggle svg {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+    </style>
 </head>
 <body id="main-body"
       data-bg-light="{{ asset('images/bg.jpg') }}"
@@ -21,11 +39,27 @@
                 <img src="/images/logo_dark.png" alt="Fix&Go Logo" class="w-32 sm:w-40 hidden dark:block">
             </a>
 
-            <div class="flex gap-1 items-center flex-nowrap text-xs sm:text-base">
+            <div class="flex gap-2 items-center flex-nowrap text-xs sm:text-base">
                 <!-- Dark mode toggle -->
-                <label class="cursor-pointer">
-                    <input type="checkbox" id="themeToggle" class="toggle scale-75 sm:scale-100" />
-                </label>
+                <button class="theme-toggle" id="themeToggle" title="Toggles light & dark" aria-label="auto" aria-live="polite">
+                    <svg class="sun-and-moon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
+                        <mask class="moon" id="moon-mask">
+                            <rect x="0" y="0" width="100%" height="100%" fill="white" />
+                            <circle cx="24" cy="10" r="6" fill="black" />
+                        </mask>
+                        <circle class="sun" cx="12" cy="12" r="6" mask="url(#moon-mask)" fill="currentColor" />
+                        <g class="sun-beams" stroke="currentColor">
+                            <line x1="12" y1="1" x2="12" y2="3" />
+                            <line x1="12" y1="21" x2="12" y2="23" />
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                            <line x1="1" y1="12" x2="3" y2="12" />
+                            <line x1="21" y1="12" x2="23" y2="12" />
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                        </g>
+                    </svg>
+                </button>
 
                 @if (Route::has('login'))
                     @auth
@@ -68,22 +102,24 @@
         body.style.backgroundAttachment = 'fixed';
     }
 
-    if (localStorage.getItem('theme') === 'dark') {
-        htmlTag.classList.add('dark');
-        toggle.checked = true;
-        setBackground(darkBg);
-    }
-
-    toggle.addEventListener('change', () => {
-        if (toggle.checked) {
+    function applyTheme(theme) {
+        if (theme === 'dark') {
             htmlTag.classList.add('dark');
-            localStorage.setItem('theme', 'dark');
             setBackground(darkBg);
         } else {
             htmlTag.classList.remove('dark');
-            localStorage.setItem('theme', 'light');
             setBackground(lightBg);
         }
+        localStorage.setItem('theme', theme);
+    }
+
+    if (localStorage.getItem('theme') === 'dark') {
+        applyTheme('dark');
+    }
+
+    toggle.addEventListener('click', () => {
+        const isDark = htmlTag.classList.contains('dark');
+        applyTheme(isDark ? 'light' : 'dark');
     });
 </script>
 

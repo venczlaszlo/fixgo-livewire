@@ -14,7 +14,7 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 @foreach ($services as $service)
                     {{-- Szolgáltatás kártya --}}
-                    <div class="bg-white/80 dark:bg-gray-800 shadow-lg rounded-lg p-6 text-black dark:text-white transition-transform transform hover:scale-105 hover:bg-gray-100 dark:hover:bg-gray-700 duration-300 ease-in-out w-full">
+                    <div class="bg-white/80 dark:bg-gray-800 shadow-lg rounded-lg p-6 text-black dark:text-white transition-transform transform hover:scale-105 hover:bg-gray-100 dark:hover:bg-gray-700 duration-300 ease-in-out w-full flex flex-col justify-between">
 
                         {{-- Fejléc: kép és információk --}}
                         <div class="flex items-center space-x-4 mb-4">
@@ -36,7 +36,7 @@
                                 </h2>
 
                                 {{-- Leírás --}}
-                                <p class="text-sm text-gray-600 dark:text-gray-400 leading-tight mb-2 break-words max-h-20 overflow-hidden text-center sm:text-left">
+                                <p class="text-sm text-gray-600 dark:text-gray-400 leading-tight mb-2 break-words max-h-40 overflow-y-hidden hover:overflow-y-auto sm:text-left">
                                     {{ $service->desc }}
                                 </p>
 
@@ -45,7 +45,7 @@
                                     <div class="flex gap-1 flex-wrap">
                                         @for ($i = 1; $i <= 5; $i++)
                                             <svg
-                                                class="w-5 h-5 {{ $i <= $service->rating ? 'text-yellow-400' : 'text-gray-300' }}"
+                                                class="w-5 h-5 {{ $i <= $service->rating ? 'text-yellow-400' : 'text-gray-300' }} "
                                                 fill="currentColor"
                                                 viewBox="0 0 20 20">
                                                 <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.967h4.174c.969 0 1.371 1.24.588 1.81l-3.38 2.455
@@ -60,7 +60,7 @@
                         </div>
 
                         {{-- Részletek gomb --}}
-                        <div class="flex flex-wrap justify-between gap-2 mt-4">
+                        <div class="flex flex-wrap justify-between gap-2 mt-4 mt-auto">
                             <a
                                 href="{{ url('/services/' . $service->slug) }}"
                                 class="bg-[#187aa0] text-white px-6 py-3 rounded-full hover:bg-[#125d7a] transition-colors duration-300 w-full sm:w-auto text-center">
