@@ -7,43 +7,44 @@
     @vite('resources/css/app.css')
 </head>
 <body id="main-body"
-    data-bg-light="{{ asset('images/bg.jpg') }}"
-    data-bg-dark="{{ asset('images/bgdark.jpg') }}"
-    class="min-h-screen flex flex-col bg-cover bg-center bg-no-repeat antialiased transition-all duration-300 text-black dark:text-white"
-    style="background-image: url('{{ asset('images/bg.jpg') }}'); background-size: cover; background-position: center center; background-attachment: fixed;">
+      data-bg-light="{{ asset('images/bg.jpg') }}"
+      data-bg-dark="{{ asset('images/bgdark.jpg') }}"
+      class="min-h-screen flex flex-col bg-cover bg-center bg-no-repeat antialiased transition-all duration-300 text-black dark:text-white"
+      style="background-image: url('{{ asset('images/bg.jpg') }}'); background-size: cover; background-position: center center; background-attachment: fixed;">
 
 <!-- Header -->
 <header id="navbar" class="navbar bg-gray-200 dark:bg-gray-900 text-black dark:text-white shadow-sm transition-all fixed top-0 left-0 w-full z-50">
-    <div class="flex justify-between w-7xl mx-auto">
-    <div class="items-center mt-1 mb-1">
-        <a href="/">
-            <img src="/images/logo.png" alt="Fix&Go Logo" class="w-40 mr-2 dark:hidden">
-            <img src="/images/logo_dark.png" alt="Fix&Go Logo" class="w-40 mr-2 hidden dark:block">
-        </a>
-    </div>
+    <div class="w-full">
+        <div class="max-w-7xl mx-auto px-4 flex justify-between items-center flex-nowrap py-2 gap-2">
+            <a href="/" class="flex-shrink-0">
+                <img src="/images/logo.png" alt="Fix&Go Logo" class="w-32 sm:w-40 dark:hidden">
+                <img src="/images/logo_dark.png" alt="Fix&Go Logo" class="w-32 sm:w-40 hidden dark:block">
+            </a>
 
-    <div class="flex gap-2 items-center">
-        <!-- Dark mode toggle -->
-        <label class="cursor-pointer">
-            <input type="checkbox" id="themeToggle" class="toggle" />
-        </label>
+            <div class="flex gap-1 items-center flex-nowrap text-xs sm:text-base">
+                <!-- Dark mode toggle -->
+                <label class="cursor-pointer">
+                    <input type="checkbox" id="themeToggle" class="toggle scale-75 sm:scale-100" />
+                </label>
 
-        @if (Route::has('login'))
-            @auth
-                <a href="{{ route('profile') }}" class="btn bg-[#187aa0] hover:bg-[#125d7a] text-white dark:text-white">Profil</a>
-            @else
-                <a href="{{ route('login') }}" class="btn bg-[#187aa0] hover:bg-[#125d7a] text-white dark:text-white">Bejelentkezés</a>
-                @if (Route::has('register'))
-                    <a href="{{ route('register') }}" class="btn bg-[#125d7a] hover:bg-[#0e4860] text-white dark:text-white">Regisztráció</a>
+                @if (Route::has('login'))
+                    @auth
+                        <a href="{{ route('profile') }}" class="btn bg-[#187aa0] hover:bg-[#125d7a] text-white dark:text-white px-1.5 py-0.5 sm:px-3 sm:py-1.5 text-xs sm:text-sm whitespace-nowrap">Profil</a>
+                    @else
+                        <a href="{{ route('login') }}" class="btn bg-[#187aa0] hover:bg-[#125d7a] text-white dark:text-white px-1.5 py-0.5 sm:px-3 sm:py-1.5 text-xs sm:text-sm whitespace-nowrap">Bejelentkezés</a>
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}" class="btn bg-[#125d7a] hover:bg-[#0e4860] text-white dark:text-white px-1.5 py-0.5 sm:px-3 sm:py-1.5 text-xs sm:text-sm whitespace-nowrap">Regisztráció</a>
+                        @endif
+                    @endauth
                 @endif
-            @endauth
-        @endif
-    </div>
+            </div>
+
+        </div>
     </div>
 </header>
 
 <script>
-    window.onscroll = function() {
+    window.onscroll = function () {
         const header = document.getElementById('navbar');
         if (window.scrollY > 50) {
             header.classList.add('shadow-xl', 'bg-opacity-90');
@@ -52,7 +53,6 @@
         }
     };
 
-    // Téma kezelés
     const toggle = document.getElementById('themeToggle');
     const htmlTag = document.documentElement;
     const body = document.getElementById('main-body');
@@ -88,41 +88,47 @@
 </script>
 
 <!-- Content wrapper -->
-<div class="w-7xl mx-auto mt-20">
+<div class="max-w-7xl mx-auto px-4 mt-28">
     {{ $slot }}
 </div>
 
 <!-- Footer -->
-<footer class="footer sm:footer-horizontal bg-gray-200 dark:bg-gray-900 text-black dark:text-white p-10 transition-all">
-    <div class="flex justify-between w-7xl mx-auto">
-    <aside class="">
-        <img src="images/logo.png" alt="Icon" width="100" class="dark:hidden" />
-        <img src="images/logo_dark.png" alt="Icon" width="100" class="hidden dark:block" />
-        <br />
-        Járműkarbantartó kereső szolgáltatás 2025 óta.
-    </aside>
+<footer class="bg-gray-200 dark:bg-gray-900 text-black dark:text-white py-6 transition-all">
+    <div class="w-full max-w-7xl mx-auto px-4 flex flex-wrap sm:flex-nowrap items-start justify-between gap-4">
 
-    <nav>
-        <h6 class="footer-title">Szolgáltatások</h6>
-        <a href="{{ route('alkatreszkereskedo') }}" class="link link-hover">Alkatrészkereskedők</a>
-        <a href="{{ route('automentok') }}" class="link link-hover">Autómentők</a>
-        <a href="{{ route('automoso') }}" class="link link-hover">Autómosók</a>
-        <a href="{{ route('autoszerelo') }}" class="link link-hover">Autószerelők</a>
-        <a href="{{ route('gumiszerviz') }}" class="link link-hover">Gumiszervízek</a>
-    </nav>
+        <!-- Logo + szöveg -->
+        <div class="flex-shrink-0 max-w-[160px]">
+            <img src="/images/logo.png" alt="Icon" class="w-20 dark:hidden mb-2" />
+            <img src="/images/logo_dark.png" alt="Icon" class="w-20 hidden dark:block mb-2" />
+            <p class="text-xs sm:text-sm">Járműkarbantartó kereső<br>2025 óta.</p>
+        </div>
 
-    <nav>
-        <h6 class="footer-title">Céginformációk</h6>
-        <a href="{{ route('about-us') }}" class="link link-hover">Rólunk</a>
-        <a href="{{ route('contact') }}" class="link link-hover">Kapcsolat</a>
-    </nav>
-    <nav>
-        <h6 class="footer-title">Jogi információk</h6>
-        <a href="{{ route('terms-of-service') }}" class="link link-hover">Felhasználási feltételek</a>
-        <a href="{{ route('privacy-policy') }}" class="link link-hover">Adatvédelmi irányelvek</a>
-        <a href="{{ route('cookie-policy') }}" class="link link-hover">Süti szabályzat</a>
-    </nav>
+        <!-- Szolgáltatások -->
+        <div class="flex flex-col gap-[2px] sm:gap-2 sm:text-sm flex-shrink-0 min-w-[120px]">
+            <h6 class="font-semibold text-xs sm:text-sm mb-[2px]">Szolgáltatások</h6>
+            <a href="{{ route('alkatreszkereskedo') }}" class="hover:underline">Alkatrészkereskedők</a>
+            <a href="{{ route('autoszerelo') }}" class="hover:underline">Autószerelők</a>
+            <a href="{{ route('gumiszerviz') }}" class="hover:underline">Gumiszerviz</a>
+            <a href="{{ route('automoso') }}" class="hover:underline">Autómosók</a>
+            <a href="{{ route('automentok') }}" class="hover:underline">Autómentők</a>
+        </div>
+
+        <!-- Céginfó -->
+        <div class="flex flex-col gap-[2px] sm:gap-2 sm:text-sm flex-shrink-0 min-w-[120px]">
+            <h6 class="font-semibold text-xs sm:text-sm mb-[2px]">Céginformációk</h6>
+            <a href="{{ route('about-us') }}" class="hover:underline">Rólunk</a>
+            <a href="{{ route('contact') }}" class="hover:underline">Kapcsolat</a>
+        </div>
+
+        <!-- Jogi -->
+        <div class="flex flex-col gap-[2px] sm:gap-2 sm:text-sm flex-shrink-0 min-w-[120px]">
+            <h6 class="font-semibold text-xs sm:text-sm mb-[2px]">Jogi információk</h6>
+            <a href="{{ route('terms-of-service') }}" class="hover:underline">Feltételek</a>
+            <a href="{{ route('privacy-policy') }}" class="hover:underline">Adatvédelem</a>
+            <a href="{{ route('cookie-policy') }}" class="hover:underline">Sütik</a>
+        </div>
     </div>
 </footer>
+
 </body>
 </html>

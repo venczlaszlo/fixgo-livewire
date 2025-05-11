@@ -6,7 +6,7 @@
         <div class="max-w-[1600px] mx-auto">
 
             {{-- Oldalcím --}}
-            <h1 class="text-4xl font-bold text-left text-black dark:text-white mb-8 mt-10">
+            <h1 class="text-4xl font-bold text-center text-black dark:text-white mb-8 mt-10">
                 Szolgáltatások
             </h1>
 
@@ -14,7 +14,7 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 @foreach ($services as $service)
                     {{-- Szolgáltatás kártya --}}
-                    <div class="bg-white/80 dark:bg-gray-800 shadow-lg rounded-lg p-6 text-black dark:text-white transition-transform transform hover:scale-105 hover:bg-gray-100 dark:hover:bg-gray-700 duration-300 ease-in-out">
+                    <div class="bg-white/80 dark:bg-gray-800 shadow-lg rounded-lg p-6 text-black dark:text-white transition-transform transform hover:scale-105 hover:bg-gray-100 dark:hover:bg-gray-700 duration-300 ease-in-out w-full">
 
                         {{-- Fejléc: kép és információk --}}
                         <div class="flex items-center space-x-4 mb-4">
@@ -22,7 +22,7 @@
                             {{-- Szolgáltatás képe --}}
                             <div class="flex-shrink-0">
                                 <img
-                                    src="{{ $service->image ? asset($service->image) : asset('images/default-image.jpg') }}"
+                                    src="{{ asset('images/' . ($service->image ?? 'default-image.jpg')) }}"
                                     alt="{{ $service->name }}"
                                     class="w-16 h-16 rounded-full object-cover">
                             </div>
@@ -36,7 +36,7 @@
                                 </h2>
 
                                 {{-- Leírás --}}
-                                <p class="text-sm text-gray-600 dark:text-gray-400 leading-tight mb-2 break-words max-h-20 overflow-hidden">
+                                <p class="text-sm text-gray-600 dark:text-gray-400 leading-tight mb-2 break-words max-h-20 overflow-hidden text-center sm:text-left">
                                     {{ $service->desc }}
                                 </p>
 
@@ -60,11 +60,13 @@
                         </div>
 
                         {{-- Részletek gomb --}}
-                        <a
-                            href="{{ url('/services/' . $service->slug) }}"
-                            class="mt-4 inline-block bg-[#187aa0] text-white px-6 py-3 rounded-full hover:bg-[#125d7a] transition-colors duration-300">
-                            Részletek
-                        </a>
+                        <div class="flex flex-wrap justify-between gap-2 mt-4">
+                            <a
+                                href="{{ url('/services/' . $service->slug) }}"
+                                class="bg-[#187aa0] text-white px-6 py-3 rounded-full hover:bg-[#125d7a] transition-colors duration-300 w-full sm:w-auto text-center">
+                                Részletek
+                            </a>
+                        </div>
                     </div>
                 @endforeach
             </div>

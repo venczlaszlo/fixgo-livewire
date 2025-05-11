@@ -19,6 +19,18 @@
                     <li>Felhasználók valós visszajelzései alapján történő ajánlások biztosítása</li>
                 </ul>
 
+                <h2 class="text-2xl font-semibold text-black dark:text-white">Lefedett terület</h2>
+                <p>Platformunk elsődlegesen <strong>Gyula</strong> környékére fókuszál, és az alábbi településekre kínál autós szolgáltatókat:</p>
+                <ul class="list-disc pl-6 space-y-1">
+                    <li>Gyula</li>
+                    <li>Békéscsaba</li>
+                    <li>Sarkad</li>
+                    <li>Elek</li>
+                    <li>Kétegyháza</li>
+                    <li>Doboz</li>
+                </ul>
+                <p>A jövőben tervezzük a lefedettség bővítését további Békés megyei településekre is.</p>
+
                 <h2 class="text-2xl font-semibold text-black dark:text-white">Kapcsolat</h2>
                 <p>Ha kérdésed, ötleted vagy észrevételed van, írj bátran nekünk az <a href="mailto:info@fixandgo.hu" class="text-[#187aa0] hover:underline">info@fixandgo.hu</a> email címen.</p>
             </div>

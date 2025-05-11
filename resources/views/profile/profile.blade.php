@@ -1,92 +1,92 @@
 <x-main-layout>
-    <div class="main-content mt-35 mb-55">
-        <div class="max-w-4xl mx-auto">
-            <h1 class="text-4xl font-bold text-left text-black dark:text-white mb-8">Profilom</h1>
+    <div class="px-[15px] py-6 text-black w-full box-border">
+        <h1 class="text-4xl font-bold text-left text-black dark:text-white mb-8">Profilom</h1>
 
-            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8">
-                {{-- Felhasználói adatok --}}
-                <div class="mb-8">
-                    <h2 class="text-2xl font-semibold text-black dark:text-white mb-4">Felhasználói adatok</h2>
-                    <p><strong class="font-medium">Név:</strong> {{ Auth::user()->name }}</p>
-                    <p><strong class="font-medium">Email:</strong> {{ Auth::user()->email }}</p>
-                </div>
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 w-full">
+            {{-- Felhasználói adatok --}}
+            <div class="mb-8">
+                <h2 class="text-2xl font-semibold text-black dark:text-white mb-4">Felhasználói adatok</h2>
+                <p><strong class="font-medium">Név:</strong> {{ Auth::user()->name }}</p>
+                <p><strong class="font-medium">Email:</strong> {{ Auth::user()->email }}</p>
+            </div>
 
-                {{-- Kedvenc szolgáltatások --}}
-                <div class="mb-8">
-                    <h2 class="text-2xl font-semibold text-black dark:text-white mb-4">Kedvenc szolgáltatások</h2>
-                    @if(auth()->user()->favoriteServices->isEmpty())
-                        <p class="text-gray-500">Nincs még kedvenc szolgáltatásod.</p>
-                    @else
-                        <ul class="space-y-3">
-                            @foreach(auth()->user()->favoriteServices as $fav)
-                                <li class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg shadow-sm">
-                                    <a href="{{ route('services.show', $fav->slug) }}" class="text-[#187aa0] hover:underline">{{ $fav->name }}</a>
-                                </li>
-                            @endforeach
-                        </ul>
-                    @endif
-                </div>
+            {{-- Kedvenc szolgáltatások --}}
+            <div class="mb-8">
+                <h2 class="text-2xl font-semibold text-black dark:text-white mb-4">Kedvenc szolgáltatások</h2>
+                @if(auth()->user()->favoriteServices->isEmpty())
+                    <p class="text-gray-500">Nincs még kedvenc szolgáltatásod.</p>
+                @else
+                    <ul class="space-y-3">
+                        @foreach(auth()->user()->favoriteServices as $fav)
+                            <li class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg shadow-sm">
+                                <a href="{{ route('services.show', $fav->slug) }}" class="text-[#187aa0] hover:underline">{{ $fav->name }}</a>
+                            </li>
+                        @endforeach
+                    </ul>
+                @endif
+            </div>
 
-                {{-- Jelszó megváltoztatása --}}
-                <div class="mb-8">
-                    <h2 class="text-2xl font-semibold text-black dark:text-white mb-4">Jelszó megváltoztatása</h2>
-                    <form method="POST" action="{{ route('password.update') }}">
-                        @csrf
-                        @method('PUT')
+            {{-- Jelszó megváltoztatása --}}
+            <div class="mb-8">
+                <h2 class="text-2xl font-semibold text-black dark:text-white mb-4">Jelszó megváltoztatása</h2>
+                <form method="POST" action="{{ route('password.update') }}">
+                    @csrf
+                    @method('PUT')
 
-                        {{-- Jelenlegi jelszó mező --}}
-                        <div class="mb-6">
-                            <label for="current_password" class="block text-sm font-medium text-gray-700 dark:text-white">Jelenlegi jelszó</label>
-                            <input type="password" name="current_password" id="current_password" class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm dark:bg-gray-700 dark:text-white dark:border-gray-600 focus:ring-2 focus:ring-[#187aa0]" required>
-                            @error('current_password')
-                            <span class="text-red-500 text-sm">{{ $message }}</span>
-                            @enderror
-                        </div>
+                    {{-- Jelenlegi jelszó mező --}}
+                    <div class="mb-6">
+                        <label for="current_password" class="block text-sm font-medium text-gray-700 dark:text-white">Jelenlegi jelszó</label>
+                        <input type="password" name="current_password" id="current_password" class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm dark:bg-gray-700 dark:text-white dark:border-gray-600 focus:ring-2 focus:ring-[#187aa0]" required>
+                        @error('current_password')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                        @enderror
+                    </div>
 
-                        {{-- Új jelszó mező --}}
-                        <div class="mb-6">
-                            <label for="new_password" class="block text-sm font-medium text-gray-700 dark:text-white">Új jelszó</label>
-                            <input type="password" name="new_password" id="new_password" class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm dark:bg-gray-700 dark:text-white dark:border-gray-600 focus:ring-2 focus:ring-[#187aa0]" required>
-                            @error('new_password')
-                            <span class="text-red-500 text-sm">{{ $message }}</span>
-                            @enderror
-                        </div>
+                    {{-- Új jelszó mező --}}
+                    <div class="mb-6">
+                        <label for="new_password" class="block text-sm font-medium text-gray-700 dark:text-white">Új jelszó</label>
+                        <input type="password" name="new_password" id="new_password" class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm dark:bg-gray-700 dark:text-white dark:border-gray-600 focus:ring-2 focus:ring-[#187aa0]" required>
+                        @error('new_password')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                        @enderror
+                    </div>
 
-                        {{-- Új jelszó megerősítése mező --}}
-                        <div class="mb-6">
-                            <label for="new_password_confirmation" class="block text-sm font-medium text-gray-700 dark:text-white">Új jelszó megerősítése</label>
-                            <input type="password" name="new_password_confirmation" id="new_password_confirmation" class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm dark:bg-gray-700 dark:text-white dark:border-gray-600 focus:ring-2 focus:ring-[#187aa0]" required>
-                            @error('new_password_confirmation')
-                            <span class="text-red-500 text-sm">{{ $message }}</span>
-                            @enderror
-                        </div>
+                    {{-- Új jelszó megerősítése mező --}}
+                    <div class="mb-6">
+                        <label for="new_password_confirmation" class="block text-sm font-medium text-gray-700 dark:text-white">Új jelszó megerősítése</label>
+                        <input type="password" name="new_password_confirmation" id="new_password_confirmation" class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm dark:bg-gray-700 dark:text-white dark:border-gray-600 focus:ring-2 focus:ring-[#187aa0]" required>
+                        @error('new_password_confirmation')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                        @enderror
+                    </div>
 
-                        <div class="flex justify-end">
-                            <button type="submit" class="btn btn-primary px-6 py-2">Jelszó változtatása</button>
-                        </div>
+                    <div class="flex justify-end">
+                        <button type="submit" class="btn btn-primary px-6 py-2">Jelszó változtatása</button>
+                    </div>
+                </form>
+            </div>
+
+            {{-- Gombok --}}
+            <div class="flex gap-4 justify-start mt-6">
+                {{-- Admin Panel (csak super-adminnak) --}}
+                @if(auth()->user()->isSuperAdmin())
+                    <form method="GET" action="{{ url('admin') }}">
+                        <button type="submit" class="btn btn-outline btn-sm">Admin Panel</button>
                     </form>
-                </div>
+                @endif
 
-                {{-- Gombok --}}
-                <div class="flex gap-4 justify-start mt-6">
-                    {{-- Admin Panel (csak super-adminnak) --}}
-                    @if(auth()->user()->isSuperAdmin())
-                        <a href="{{ url('admin') }}" class="btn btn-outline btn-sm">Admin Panel</a>
-                    @endif
+                {{-- Kijelentkezés --}}
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="btn btn-outline btn-sm">Kijelentkezés</button>
+                </form>
 
-                    {{-- Kijelentkezés --}}
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-                        <button type="submit" class="btn btn-outline btn-sm">Kijelentkezés</button>
-                    </form>
-
-                    {{-- Fiók törlése --}}
-                    <form action="{{ route('profile.destroy') }}" method="POST" onsubmit="return confirm('Biztosan törölni szeretnéd a fiókodat?');">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-error btn-sm">Fiók törlése</button>
-                    </form>
-                </div>
+                {{-- Fiók törlése --}}
+                <form action="{{ route('profile.destroy') }}" method="POST" onsubmit="return confirm('Biztosan törölni szeretnéd a fiókodat?');">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-error btn-sm">Fiók törlése</button>
+                </form>
             </div>
         </div>
     </div>
