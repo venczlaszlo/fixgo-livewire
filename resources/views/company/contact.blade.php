@@ -12,7 +12,7 @@
 
                 <!-- Elérhetőségek -->
                 <div class="pt-6 border-t border-gray-300 dark:border-gray-700">
-                    <p><strong>Email:</strong> <a href="mailto:fixgo.team@gmail.com" class="text-[#187aa0] dark:text-[#a2c9d9] hover:underline">info@fixandgo.hu</a></p>
+                    <p><strong>Email:</strong> <a href="mailto:fixandgo.team@gmail.com" class="text-[#187aa0] dark:text-[#a2c9d9] hover:underline">fixandgo.team@gmail.com</a></p>
                     <p><strong>Telefon:</strong> <a href="tel:+36302515573" class="text-[#187aa0] dark:text-[#a2c9d9] hover:underline">+36-30-251-5573</a></p>
                     <p><strong>Cím:</strong> <a href="https://www.google.com/maps?q=5600+Békéscsaba,+Kazinczy+u.+7" target="_blank" class="text-[#187aa0] dark:text-[#a2c9d9] hover:underline">5600 Békéscsaba, Kazinczy u. 7</a></p>
                 </div>
