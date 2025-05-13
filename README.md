@@ -1,10 +1,14 @@
 # Fix&Go
 
-**Fix&Go** egy online járműszerviz-kereső platform, amely segíti a felhasználókat abban, hogy gyorsan megtalálják a legközelebbi autószerelőket, autómosókat, gumisokat, alkatrészboltokat és autómentőket.
+Élő demó: [https://fixgo.mittudomen.hu](https://fixgo.mittudomen.hu)
+
+ A **Fix&Go** egy járműszerviz-kereső platform, amelynek célja, hogy egyszerűbbé tegye a megbízható autós szolgáltatások megtalálását Magyarországon, különösen Gyula és környékén.
+
+
 
 ## Projekt célja
 
-A cél egy könnyen használható, reszponzív webalkalmazás fejlesztése, amely valós szolgáltatókat jelenít meg, és lehetővé teszi a felhasználóknak a kedvencek kezelését, szolgáltatások értékelését, valamint saját profiljuk testreszabását.
+A cél egy könnyen használható, reszponzív webalkalmazás fejlesztése, amely valós szolgáltatókat jelenít meg, és lehetővé teszi a felhasználóknak a kedvencek kezelését, szolgáltatások értékelését.
 
 ## Készítők
 
@@ -23,17 +27,11 @@ A cél egy könnyen használható, reszponzív webalkalmazás fejlesztése, amel
 - Szolgáltatások értékelése, kedvencek kezelése
 - Admin funkciók (Filament alapú CRUD)
 
-## Technológiák
-
-- **Frontend:** HTML, Tailwind CSS, JavaScript, Laravel Livewire
-- **Backend:** PHP (Laravel), MySQL
-- **Egyéb:** Google Maps API, JWT, Filament, DaisyUI
-
 ## Telepítés (fejlesztői környezet)
 
 ```bash
-git clone https://github.com/venczlaszlo/fixgo-livewire.git
-cd fixgo-livewire
+git clone https://github.com/venczlaszlo/fixgo-livewire.git / https://git.gszi.edu.hu/vizsgaremek2425/vremek_13B_01.git
+cd fixgo-livewire / vremek_13B_01
 composer install
 cp .env.example .env
 php artisan key:generate
