@@ -42,7 +42,6 @@
                     <li>Békéscsaba</li>
                     <li>Sarkad</li>
                     <li>Elek</li>
-                    <li>Kétegyháza</li>
                     <li>Doboz</li>
                 </ul>
                 <p>A jövőben tervezzük a lefedettség bővítését további Békés megyei településekre is.</p>
