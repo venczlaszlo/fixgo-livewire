@@ -28,7 +28,7 @@ class RegistrationTest extends TestCase
 
         $response
             ->assertHasNoErrors()
-            ->assertRedirect(route('dashboard', absolute: false));
+            ->assertRedirect(route('homepage')); // vagy pl. 'profile'
 
         $this->assertAuthenticated();
     }

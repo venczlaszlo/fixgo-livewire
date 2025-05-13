@@ -77,7 +77,7 @@
                 <!-- Szolgáltatás képe -->
                 @if($service->image)
                     <div class="flex-shrink-0 hidden lg:block lg:w-[300px] lg:h-[200px]">
-                        <img src="{{ $service->image ? asset('images/' . $service->image) : asset('images/default-image.jpg') }}" alt="{{ $service->name }}" class="w-full h-full object-cover rounded-lg shadow-lg">
+                        <img src="{{ $service->image ? asset('images/' . $service->image) : asset('images/default-image.jpg') }}" alt="{{ $service->name }}" class="w-full h-full object-contain rounded-lg shadow-lg">
                     </div>
                 @endif
             </div>

@@ -20,7 +20,9 @@ class AuthenticationTest extends TestCase
 
     public function test_users_can_authenticate_using_the_login_screen(): void
     {
-        $user = User::factory()->create();
+        $user = User::factory()->create([
+            'password' => bcrypt('password'),
+        ]);
 
         $response = LivewireVolt::test('auth.login')
             ->set('email', $user->email)
@@ -29,7 +31,7 @@ class AuthenticationTest extends TestCase
 
         $response
             ->assertHasNoErrors()
-            ->assertRedirect(route('dashboard', absolute: false));
+            ->assertRedirect(route('homepage'));
 
         $this->assertAuthenticated();
     }

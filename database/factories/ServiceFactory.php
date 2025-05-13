@@ -16,12 +16,14 @@ class ServiceFactory extends Factory
      */
     public function definition(): array
     {
+        $allowedTypes = ['autoszerelo', 'automoso', 'alkatreszkereskedo', 'automentok', 'gumiszerviz'];
+
         return [
-            'slug' => fake()->slug(),
-            'name' => fake()->name(),
-            'desc' => fake()->text(),
-            'type' => fake()->name(),
-            'address' => fake()->address(),
+            'slug' => $this->faker->unique()->slug(),
+            'name' => $this->faker->company(),
+            'desc' => $this->faker->paragraph(),
+            'type' => $this->faker->randomElement($allowedTypes),
+            'address' => $this->faker->address(),
         ];
     }
 }

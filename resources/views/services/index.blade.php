@@ -14,7 +14,8 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 @foreach ($services as $service)
                     {{-- Szolgáltatás kártya --}}
-                    <div class="bg-white/80 dark:bg-gray-800 shadow-lg rounded-lg p-6 text-black dark:text-white transition-transform transform hover:scale-105 hover:bg-gray-100 dark:hover:bg-gray-700 duration-300 ease-in-out w-full flex flex-col justify-between">
+                    <div
+                        class="bg-white/80 dark:bg-gray-800 shadow-lg rounded-lg p-6 text-black dark:text-white transition-transform transform hover:scale-105 hover:bg-gray-100 dark:hover:bg-gray-700 duration-300 ease-in-out w-full flex flex-col justify-between">
 
                         {{-- Fejléc: kép és információk --}}
                         <div class="flex items-center space-x-4 mb-4">
@@ -24,7 +25,7 @@
                                 <img
                                     src="{{ asset('images/' . ($service->image ?? 'default-image.jpg')) }}"
                                     alt="{{ $service->name }}"
-                                    class="w-16 h-16 rounded-full object-cover">
+                                    class="w-16 h-16 rounded-full object-contain">
                             </div>
 
                             {{-- Szolgáltatás neve, leírása, értékelése --}}
